@@ -1,8 +1,7 @@
+import Image from "next/image"
+
 import { useSelector } from "+redux"
 import { state } from "+local"
-
-import ArrowUpIcon from "icons/arrow-up.svg"
-import ArrowDownIcon from "icons/arrow-down.svg"
 
 import run_buyer from "sockets/buyer"
 import run_ticks from "sockets/observer_ticks"
@@ -10,7 +9,7 @@ import run_ticks from "sockets/observer_ticks"
 export const SocketsStatus = () => {
   const {
     buyer: { connected: buyerConnected },
-    ticks: { connected: tickstConnected }
+    ticks: { connected: tickstConnected },
   } = useSelector((s) => s.sockets)
 
   const handleToggleTicks = () => {
@@ -47,9 +46,21 @@ export const SocketsStatus = () => {
           `}
         >
           {tickstConnected ? (
-            <img className="w-6 h-6" src={ArrowDownIcon} alt="disconnect" />
+            <Image
+              className="w-8 h-8"
+              src="/icons/arrow-up.svg"
+              width="8"
+              height="8"
+              alt="disconnect"
+            />
           ) : (
-            <img className="w-6 h-6" src={ArrowUpIcon} alt="reconnect" />
+            <Image
+              className="w-8 h-8"
+              src="/icons/arrow-down.svg"
+              width="8"
+              height="8"
+              alt="reconnect"
+            />
           )}
         </button>
       </div>
@@ -64,9 +75,21 @@ export const SocketsStatus = () => {
           `}
         >
           {buyerConnected ? (
-            <img className="w-6 h-6" src={ArrowDownIcon} alt="disconnect" />
+            <Image
+              className="w-8 h-8"
+              src="/icons/arrow-up.svg"
+              width="8"
+              height="8"
+              alt="disconnect"
+            />
           ) : (
-            <img className="w-6 h-6" src={ArrowUpIcon} alt="reconnect" />
+            <Image
+              className="w-8 h-8"
+              src="/icons/arrow-down.svg"
+              width="8"
+              height="8"
+              alt="reconnect"
+            />
           )}
         </button>
       </div>

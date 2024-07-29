@@ -4,11 +4,11 @@ import { close } from "./events/close"
 import { error } from "./events/error"
 import { state } from "+local"
 
-const app_id = import.meta.env.VITE_APP_ID
-const url = import.meta.env.VITE_BRO
+const app_id = process.env.NEXT_PUBLIC_APP_ID
+const url = process.env.NEXT_PUBLIC_BRO
 const uri = `${url}${app_id}`
 
-export default () => {
+const buyer = () => {
   console.log(":: socket buyer launched")
   const ws = new WebSocket(uri)
   ws.onopen = open
@@ -17,3 +17,5 @@ export default () => {
   ws.onmessage = message
   state.sockets.buyer = ws
 }
+
+export default buyer

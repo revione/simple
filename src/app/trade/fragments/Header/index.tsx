@@ -1,18 +1,21 @@
+"use client"
+
 import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 import { logoutDeriv } from "sockets/buyer/sends"
 
 import logOutIcon from "icons/logOut.svg"
 
-export default () => {
-  const navigate = useNavigate()
+export default function Header() {
+  const router = useRouter()
 
   const logOut = () => {
     localStorage.removeItem("state")
-    if (import.meta.env.PROD) logoutDeriv()
-    navigate(0)
-    navigate("/", { replace: true })
+    if (process.env.NODE_ENV === "production") logoutDeriv()
+    router.refresh()
+    router.push("/")
   }
 
   return (
@@ -23,13 +26,19 @@ export default () => {
         opacity: 1,
         transition: {
           duration: 2,
-          delay: 1
-        }
+          delay: 1,
+        },
       }}
     >
       <div className="text-xl">Rev Play</div>
       <button onClick={logOut} className="panel-button">
-        <img className="w-8 mr-1" src={logOutIcon} alt="log out" />
+        <Image
+          className="w-8 mr-1"
+          src={logOutIcon}
+          alt="log out"
+          width={32}
+          height={32}
+        />
       </button>
     </motion.header>
   )

@@ -1,11 +1,11 @@
-import { pausa, play } from "+local/utils/action_buttons"
 import { useDispatch, useSelector } from "+redux"
+
 import { clean_info } from "+redux/reducer/slices/info"
 import { clean_purchases } from "+redux/reducer/slices/purchases"
-import cleanIcon from "icons/clean.svg"
-import pauseIcon from "icons/pause.svg"
-import playIcon from "icons/play.svg"
-import stopIcon from "icons/stop.svg"
+
+import { pausa, play } from "+local/utils/action_buttons"
+
+import Image from "next/image"
 
 export const ButtonPanel = () => {
   const dispatch = useDispatch()
@@ -20,26 +20,46 @@ export const ButtonPanel = () => {
     <div className="flex flex-col gap-3">
       {!purchase_enabled && (
         <button onClick={play} className="panel-button">
-          <img className="w-6 h-6 " src={playIcon} alt="play" />
+          <Image
+            src="/icons/play.svg"
+            alt="clean"
+            width="8"
+            height="8"
+            className="w-6 h-6"
+          />
         </button>
       )}
       {purchase_enabled && (
         <button onClick={pausa} className="panel-button">
-          <img
-            className="w-8 h-8 hover:scale-125"
-            src={pauseIcon}
+          <Image
+            className="w-8 h-8"
+            src="/icons/pause.svg"
+            width="8"
+            height="8"
             alt="pausa"
           />
         </button>
       )}
       {purchase_enabled && (
         <button onClick={stop} className="panel-button">
-          <img className="w-6 h-6" src={stopIcon} alt="stop" />
+          <Image
+            className="w-6 h-6"
+            src="/icons/stop.svg"
+            width="8"
+            height="8"
+            alt="stop"
+          />
         </button>
       )}
       {!purchase_enabled && (
         <button onClick={clean} className="panel-button">
-          <img className="w-7 h-7" src={cleanIcon} alt="clean" />
+          <Image
+            className="w-7 h-7"
+            src="/icons/clean.svg"
+            width="8"
+            height="8"
+            alt="clean"
+          />
         </button>
       )}
     </div>

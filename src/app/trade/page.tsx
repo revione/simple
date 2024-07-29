@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from "framer-motion"
 
 import Header from "./fragments/Header"
@@ -34,8 +36,8 @@ const Trade = () => {
           opacity: 1,
           transition: {
             duration: 2,
-            delay: 1
-          }
+            delay: 1,
+          },
         }}
       >
         <div>

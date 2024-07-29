@@ -5,10 +5,10 @@ import { error } from "./events/error"
 import { state } from "+local"
 
 const app_id = "35134"
-const url = import.meta.env.VITE_BRO
+const url = process.env.NEXT_PUBLIC_BRO
 const uri = `${url}${app_id}`
 
-export default () => {
+const candles = () => {
   console.log(" :: socket observer launched")
   const ws = new WebSocket(uri)
   ws.onopen = open
@@ -17,3 +17,5 @@ export default () => {
   ws.onmessage = message
   state.sockets.observer = ws
 }
+
+export default candles

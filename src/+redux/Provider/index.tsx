@@ -1,6 +1,6 @@
 "use client"
 
-import { persistor, store } from "+redux/configureStore"
+import { persistor, store } from "+redux"
 import { ReactNode } from "react"
 import { Provider as ProviderRedux } from "react-redux"
 
