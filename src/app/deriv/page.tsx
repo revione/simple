@@ -58,7 +58,7 @@ const Deriv = () => {
     isolateForNumber()
   }, [isolateForNumber])
 
-  return <div>Deriv</div>
+  return <div className="hidden">Deriv</div>
 }
 
 export default Deriv

@@ -10,9 +10,6 @@ const Home = () => {
 
   const onClickLogin = () => {
     if (process.env.NODE_ENV === "development") {
-      console.log("entra aqui?", {
-        NEXT_PUBLIC_DERIV: process.env.NEXT_PUBLIC_DERIV,
-      })
       // When in development mode, use the variable with the data in .env for quick login
       router.replace(process.env.NEXT_PUBLIC_DERIV || "")
     } else {
@@ -25,7 +22,6 @@ const Home = () => {
   }
 
   useEffect(() => {
-    // Ensure that window is available
     if (typeof window !== "undefined") {
       window.localStorage.removeItem("state")
     }
