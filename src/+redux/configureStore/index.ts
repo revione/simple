@@ -1,19 +1,36 @@
-import { configureStore, Tuple } from "@reduxjs/toolkit"
+import { combineReducers, configureStore } from "@reduxjs/toolkit"
 
 import reducer from "+redux/reducer"
 
-import initial, { Initial } from "+redux/initial"
-import middleware from "./middleware"
-import enhancers from "./enhancers"
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  persistStore,
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
-const preloadedState: Initial = localStorage.getItem("state")
-  ? JSON.parse(localStorage.getItem("state")!).state
-  : initial
+const persistConfig = {
+  key: "root",
+  storage,
+}
 
-export default configureStore({
-  reducer,
+const persistedReducer = persistReducer(persistConfig, combineReducers(reducer))
+
+export const store = configureStore({
+  reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== "production",
-  preloadedState: { ...preloadedState },
-  middleware,
-  enhancers,
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 })
+
+export const persistor = persistStore(store)

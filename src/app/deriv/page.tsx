@@ -24,43 +24,39 @@ const Deriv = () => {
     return paramsObject
   }, [])
 
-  const isolateForNumber = useCallback(
-    (inputObject: Record<string, string>) => {
-      const resultArray = []
-      let counter = 1
+  const isolateForNumber = useCallback(() => {
+    const queryParams = parseQueryParams()
+    const resultArray = []
+    let counter = 1
 
-      while (true) {
-        const acctKey = `acct${counter}`
-        const curKey = `cur${counter}`
-        const tokenKey = `token${counter}`
+    while (true) {
+      const acctKey = `acct${counter}`
+      const curKey = `cur${counter}`
+      const tokenKey = `token${counter}`
 
-        if (!(acctKey in inputObject)) break
+      if (!(acctKey in queryParams)) break
 
-        const newObj = {
-          acct: inputObject[acctKey],
-          cur: inputObject[curKey],
-          token: inputObject[tokenKey],
-        }
-
-        resultArray.push(newObj)
-        counter++
+      const newObj = {
+        acct: queryParams[acctKey],
+        cur: queryParams[curKey],
+        token: queryParams[tokenKey],
       }
 
-      if (resultArray.length > 0) {
-        !actualAccount && dispatch(set_actual_account(resultArray[0]))
-        dispatch(set_deriv(resultArray))
-      }
+      resultArray.push(newObj)
+      counter++
+    }
 
-      router.replace("/trade")
-    },
-    [actualAccount, dispatch, router]
-  )
+    if (resultArray.length > 0) {
+      !actualAccount && dispatch(set_actual_account(resultArray[0]))
+      dispatch(set_deriv(resultArray))
+    }
+
+    router.replace("/trade")
+  }, [actualAccount, dispatch, parseQueryParams, router])
 
   useEffect(() => {
-    const queryParams = parseQueryParams()
-    console.log({ queryParams })
-    // isolateForNumber(queryParams)
-  }, [parseQueryParams, isolateForNumber])
+    isolateForNumber()
+  }, [isolateForNumber])
 
   return <div>Deriv</div>
 }

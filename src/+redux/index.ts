@@ -5,11 +5,9 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux"
 
-import configureStore from "./configureStore"
+import { store } from "./configureStore"
 
 // store
-
-export const store = configureStore
 
 export type State = ReturnType<typeof store.getState>
 
