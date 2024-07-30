@@ -5,39 +5,17 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux"
 
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 
-import reducer from "+redux/reducer"
+import { persistStore } from "redux-persist"
 
-import {
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  persistStore,
-} from "redux-persist"
-import storage from "redux-persist/lib/storage"
-
-const persistConfig = {
-  key: "root",
-  storage,
-}
-
-const persistedReducer = persistReducer(persistConfig, combineReducers(reducer))
+import { reducer } from "./reducer/persist"
+import { middleware } from "./middleware"
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer,
   devTools: process.env.NODE_ENV !== "production",
-
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  middleware,
 })
 
 export const persistor = persistStore(store)
