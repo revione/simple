@@ -4,7 +4,7 @@ import { close } from "./events/close"
 import { error } from "./events/error"
 import { state } from "+local"
 
-const app_id = "35134"
+const app_id = process.env.NEXT_PUBLIC_CANDLES_ID
 const url = process.env.NEXT_PUBLIC_BRO
 const uri = `${url}${app_id}`
 
