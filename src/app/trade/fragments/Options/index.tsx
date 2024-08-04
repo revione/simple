@@ -2,8 +2,8 @@ import { Balance } from "./fragments/Balance"
 import { Accounts } from "./fragments/Accounts"
 import { Purchases } from "./fragments/Purchases"
 import { Duracion } from "./fragments/Duracion"
-import { Market } from "./fragments/Market"
 import { Sockets } from "./fragments/Sockets"
+import { MaxLost } from "./fragments/MaxLost"
 
 export const Options = () => (
   <div className="mb-8">
@@ -13,6 +13,7 @@ export const Options = () => (
       <div className="flex gap-12">
         <Purchases />
         <Balance />
+        <MaxLost />
       </div>
       <div className="flex justify-between">
         <Duracion />

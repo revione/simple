@@ -11,8 +11,9 @@ export const CarouselSelector = ({
   onChange,
   initialOption,
 }: CarouselSelectorProps) => {
-  const initialAngle = (options.indexOf(initialOption) / options.length) * 360
-  const [angle, setAngle] = useState(initialAngle)
+  const initialIndex = options.indexOf(initialOption)
+  const initialAngle = (initialIndex / options.length) * 360
+  const [angle, setAngle] = useState(-initialAngle) // Rotate to make initialOption visible
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)

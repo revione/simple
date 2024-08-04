@@ -25,7 +25,6 @@ const buyer = {
 const editables = {
   initial_amount_contract: 0.35, // initial amount for a contract
   initial_multiplier: 0.00666, // value to get the initial contract price ... 0.0018, 0.00321, 0.00666
-  dopel_multiplier: 2.064, // 2,3
 
   type_use_balance: "custom" as TypeUseBalance,
   total_balance: 0,
@@ -44,6 +43,11 @@ const editables = {
   custom_purchase: 5, // Interacts as an option in the Purchases component associated with Options
 
   run_sockets_after_launch_app: false,
+
+  max_lost: {
+    selected: 7,
+    dopel_multiplier: 2.064, // 2,3
+  },
 }
 
 export type Editables = typeof editables
