@@ -16,6 +16,7 @@ import { usePreset } from "./fragments/usePreset"
 import { useActiveBuyer } from "./fragments/useActiveBuyer"
 
 import "./Trade.css"
+import { Market } from "./fragments/Options/fragments/Market"
 
 const AfterTrade = () => {
   usePreset()
@@ -43,6 +44,7 @@ const Trade = () => {
         <div>
           <div className="flex items-center w-full">
             <DropDown label="Market">
+              <Market />
               <ChartData />
             </DropDown>
           </div>

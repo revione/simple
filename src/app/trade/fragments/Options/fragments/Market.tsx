@@ -1,6 +1,3 @@
-import Select from "react-select"
-import type { SingleValue } from "react-select"
-
 import { useDispatch, useSelector } from "+redux"
 import { rewrite_editables } from "+redux/reducer/slices/editables"
 
@@ -8,34 +5,35 @@ import { set_amounts_and_renew_proposals } from "sockets/buyer/utils/set_amounts
 import { useMemo } from "react"
 import { state } from "+local"
 
-const options_symbols = [
-  { value: "RDBEAR", label: "Bear Market Index" },
-  { value: "RDBULL", label: "Bull Market Index" },
-  { value: "R_10", label: "Volatility 10 Index" },
-  { value: "R_25", label: "Volatility 25 Index" },
-  { value: "R_50", label: "Volatility 50 Index" },
-  { value: "R_75", label: "Volatility 75 Index" },
-  { value: "R_100", label: "Volatility 100 Index" },
-  { value: "1HZ10V", label: "Volatility 10 (1s) Index" },
-  { value: "1HZ25V", label: "Volatility 25 (1s) Index" },
-  { value: "1HZ50V", label: "Volatility 50 (1s) Index" },
-  { value: "1HZ75V", label: "Volatility 75 (1s) Index" },
-  { value: "1HZ100V", label: "Volatility 100 (1s) Index" }
-]
+import { CarouselSelector } from "./CarouselSelector"
 
-type Option = SingleValue<{ value: string; label: string }>
+const options = [
+  "R_10",
+  "R_25",
+  "R_50",
+  "R_75",
+  "R_100",
+  "1HZ10V",
+  "1HZ25V",
+  "1HZ50V",
+  "1HZ75V",
+  "1HZ100V",
+  "RDBEAR",
+  "RDBULL",
+]
 
 export const Market = () => {
   const dispatch = useDispatch()
   const { symbol } = useSelector((s) => s.editables)
+
   const defaultSymbol = useMemo(
-    () => options_symbols.find((option) => option.value === symbol),
+    () => options.find((option) => option === symbol),
     [symbol]
   )
 
-  const change_symbol = (option: Option) => {
-    if (option?.value) {
-      dispatch(rewrite_editables({ symbol: option.value }))
+  const change_symbol = (symbol: string) => {
+    if (symbol) {
+      dispatch(rewrite_editables({ symbol }))
       set_amounts_and_renew_proposals()
       state.sockets.observer?.close()
     }
@@ -45,12 +43,10 @@ export const Market = () => {
     <div className="flex flex-col gap-6">
       <div>Market</div>
       <div>
-        <Select
-          classNamePrefix="_"
-          name="symbol"
+        <CarouselSelector
+          options={options}
           onChange={change_symbol}
-          options={options_symbols}
-          defaultValue={defaultSymbol}
+          initialOption={defaultSymbol}
         />
       </div>
     </div>

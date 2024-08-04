@@ -6,6 +6,7 @@ import { make_proposals } from "./make_proposals"
 // aqui vamos a poder enviar la data
 // sin que tengamos que escribir todo lo mismo una y otra vez
 export const send = (data: object) => {
+  if (!store.getState().sockets.buyer.connected) return
   if (state.logs.show_send_logs) console.log(":: socket buyer send : ", data)
   if (typeof state.sockets.buyer === "undefined")
     return console.log(" state.sockets.buyer not defined", data)
