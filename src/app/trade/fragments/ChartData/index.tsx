@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Chart from "./fragments/Chart"
 import { state_observer } from "+local/lists"
 
-export default () => {
+const ChartData = () => {
   const [_, setUpdate] = useState(false)
 
   useEffect(() => {
@@ -19,3 +19,5 @@ export default () => {
 
   return <Chart yValues={state_observer.lists.ticks} />
 }
+
+export default ChartData

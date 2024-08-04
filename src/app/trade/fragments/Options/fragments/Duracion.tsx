@@ -2,9 +2,12 @@ import { useCallback, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "+redux"
 import Select from "react-select"
 import type { ActionMeta } from "react-select"
-import { rewrite_editables } from "+redux/reducer/slices/editables"
+
 import { set_amounts_and_renew_proposals } from "sockets/buyer/utils/set_amounts_and_create_proposals"
-import { Editables } from "+redux/initial"
+
+import { rewrite_editables } from "+redux/reducer/slices/editables"
+
+import type { Editables } from "+redux/initial"
 
 interface Option {
   value: string
@@ -15,7 +18,7 @@ const options_duration_unit: Option[] = [
   { value: "t", label: "ticks" },
   { value: "s", label: "seconds" },
   { value: "m", label: "minutes" },
-  { value: "h", label: "hours" }
+  { value: "h", label: "hours" },
 ]
 
 type DurationUnit = "ticks" | "seconds" | "minutes" | "hours"
@@ -27,7 +30,7 @@ const limits_duration_units: Record<
   ticks: { min: 1, max: 10 },
   seconds: { min: 15, max: 59 },
   minutes: { min: 1, max: 59 },
-  hours: { min: 1, max: 23 }
+  hours: { min: 1, max: 23 },
 }
 
 export const Duracion = () => {
@@ -55,7 +58,7 @@ export const Duracion = () => {
       setActualUnit(newUnit)
       setEditables({
         [actionMeta.name || ""]: option?.value,
-        duration: minDuration
+        duration: minDuration,
       })
     }
   }

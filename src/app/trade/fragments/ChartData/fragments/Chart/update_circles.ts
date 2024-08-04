@@ -8,7 +8,13 @@ interface Props {
   circleRadius: number
 }
 
-export default ({ height, width, yValues, color, circleRadius }: Props) => {
+const updated_circles = ({
+  height,
+  width,
+  yValues,
+  color,
+  circleRadius,
+}: Props) => {
   const max = Math.max(...yValues)
   const min = Math.min(...yValues)
 
@@ -57,7 +63,7 @@ export default ({ height, width, yValues, color, circleRadius }: Props) => {
       x,
       y: newY,
       color: newColor,
-      radius: radius
+      radius: radius,
     }
   })
 }
@@ -91,3 +97,5 @@ const color_selector = (type: string, color: string) => {
   }
   return newColor
 }
+
+export default updated_circles

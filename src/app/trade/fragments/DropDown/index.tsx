@@ -7,10 +7,10 @@ interface CollapsibleProps {
   isOpen?: boolean
 }
 
-export default ({
+const DropDown = ({
   label,
   children,
-  isOpen: isOpenIncoming = false
+  isOpen: isOpenIncoming = false,
 }: CollapsibleProps) => {
   const [isOpen, setIsOpen] = useState(isOpenIncoming)
 
@@ -31,12 +31,12 @@ export default ({
         initial={{
           height: 0,
           opacity: 0,
-          overflow: "hidden"
+          overflow: "hidden",
         }}
         animate={{
           height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0,
-          overflow: isOpen ? "inherit" : "hidden"
+          overflow: isOpen ? "inherit" : "hidden",
         }}
         transition={{ duration: 0.3 }}
       >
@@ -45,3 +45,5 @@ export default ({
     </div>
   )
 }
+
+export default DropDown

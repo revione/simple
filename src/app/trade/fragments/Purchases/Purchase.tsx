@@ -1,6 +1,6 @@
 import { PurchaseRedux } from "types"
 
-export default ({
+const Purchase = ({
   purchase: {
     position,
     buy_price,
@@ -10,8 +10,8 @@ export default ({
     sell_price,
     status,
     contract_type,
-    is_sold
-  }
+    is_sold,
+  },
 }: {
   purchase: Partial<PurchaseRedux>
 }) => (
@@ -38,3 +38,5 @@ export default ({
     {contract_type && <div>{contract_type}</div>}
   </div>
 )
+
+export default Purchase

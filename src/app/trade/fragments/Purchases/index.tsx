@@ -12,10 +12,10 @@ const purchase_list = [
   "sell_price",
   "status",
   "contract_type",
-  "is_sold"
+  "is_sold",
 ]
 
-export default () => {
+const Purchases = () => {
   const { ids, items } = useSelector((s) => s.purchases)
   const ref_purchases_element = useRef<HTMLDivElement>(null)
   const ref_first_time = useRef(true)
@@ -29,7 +29,7 @@ export default () => {
     const scroll = () => {
       current.scroll({
         top: scrollHeight,
-        behavior: "smooth"
+        behavior: "smooth",
       })
     }
 
@@ -81,3 +81,5 @@ const item_filter = (purchase: PurchaseRedux) =>
   }, {})
 
 const filter_label_text = (str: string) => str.replace(/_/g, " ")
+
+export default Purchases

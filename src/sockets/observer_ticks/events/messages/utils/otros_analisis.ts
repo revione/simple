@@ -1,7 +1,7 @@
 import { state } from "+local"
 import { state_observer } from "+local/lists"
 import { store } from "+redux"
-import { SMA } from "technicalindicators"
+// import { SMA } from "technicalindicators"
 
 // First analyze
 
@@ -12,23 +12,23 @@ interface SMA_ {
   result: number[]
 }
 
-const firstAnalyze = () => {
-  const sma = new SMA({
-    period: store.getState().editables.sma,
-    values: state_observer.lists.ticks
-  }) as SMA_
+// const firstAnalyze = () => {
+//   const sma = new SMA({
+//     period: store.getState().editables.sma,
+//     values: state_observer.lists.ticks,
+//   }) as SMA_
 
-  const sma1 = sma.result[0]
-  const sma2 = sma.result[1]
+//   const sma1 = sma.result[0]
+//   const sma2 = sma.result[1]
 
-  if (sma1 > sma2) {
-    state.internal.contract_type = "CALL"
-  } else if (sma1 < sma2) {
-    state.internal.contract_type = "PUT"
-  } else {
-    state.internal.contract_type = ""
-  }
-}
+//   if (sma1 > sma2) {
+//     state.internal.contract_type = "CALL"
+//   } else if (sma1 < sma2) {
+//     state.internal.contract_type = "PUT"
+//   } else {
+//     state.internal.contract_type = ""
+//   }
+// }
 
 // Second analyze
 
@@ -190,7 +190,7 @@ function analyzeDifferences(data: number[]) {
     averageDifference,
     maxDifference,
     minDifference,
-    lastDifference: differences[differences.length - 1]
+    lastDifference: differences[differences.length - 1],
   }
 }
 
@@ -215,7 +215,7 @@ function calculateVolatility(data: number[]) {
 
   return {
     averageDifference,
-    standardDeviation
+    standardDeviation,
   }
 }
 
@@ -250,7 +250,7 @@ function calculateVolatilityScore(data: number[]) {
   return {
     averageDifference,
     standardDeviation,
-    normalizedDeviation
+    normalizedDeviation,
   }
 }
 
@@ -272,7 +272,7 @@ function calculateConsecutiveDirectionPercentage(data: number[]) {
 
   return {
     percentageUp: percentageUp.toFixed(2),
-    percentageDown: percentageDown.toFixed(2)
+    percentageDown: percentageDown.toFixed(2),
   }
 }
 

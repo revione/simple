@@ -25,12 +25,14 @@ export const Accounts = () => {
   const dispatch = useDispatch()
   const { deriv: _deriv, actualAccount } = useSelector((s) => s.access)
 
+  const [selectedAccount, setSelectedAccount] = useState<Account>(
+    actualAccount || ({} as Account)
+  )
+
   if (!_deriv || !actualAccount) {
     window.location.replace("/")
     return null
   }
-
-  const [selectedAccount, setSelectedAccount] = useState<Account>(actualAccount)
 
   const handleChange = (selectedOption: Option) => {
     if (selectedOption) {
@@ -45,7 +47,7 @@ export const Accounts = () => {
   const options = _deriv.map((account) => ({
     value: account,
     label: `${account.acct} (${account.cur})`,
-    isDisabled: selectedAccount ? account.acct === selectedAccount.acct : false
+    isDisabled: selectedAccount ? account.acct === selectedAccount.acct : false,
   }))
 
   return (
@@ -60,7 +62,7 @@ export const Accounts = () => {
             selectedAccount
               ? {
                   value: selectedAccount,
-                  label: `${selectedAccount.acct} (${selectedAccount.cur})`
+                  label: `${selectedAccount.acct} (${selectedAccount.cur})`,
                 }
               : null
           }
