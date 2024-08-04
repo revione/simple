@@ -4,12 +4,18 @@ interface CarouselSelectorProps {
   options: any[]
   onChange: (itemAtFront: any) => any
   initialOption: any
+
+  modifiers?: {
+    z?: number
+  }
 }
 
 export const CarouselSelector = ({
   options = [1, 2, 3, 4, 5, 6, 7, 8, 9],
   onChange,
   initialOption,
+
+  modifiers,
 }: CarouselSelectorProps) => {
   const initialIndex = options.indexOf(initialOption)
   const initialAngle = (initialIndex / options.length) * 360
@@ -17,6 +23,8 @@ export const CarouselSelector = ({
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const { z = 150 } = modifiers || {}
 
   const cubicBezier = useCallback(
     (
@@ -194,7 +202,7 @@ export const CarouselSelector = ({
               style={{
                 top: "50%",
                 left: "50%",
-                transform: `translate(-50%, -50%) rotateY(${itemAngle}deg) translateZ(150px)`,
+                transform: `translate(-50%, -50%) rotateY(${itemAngle}deg) translateZ(${z}px)`,
                 opacity,
               }}
             >

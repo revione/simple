@@ -53,6 +53,9 @@ export const MaxLost = () => {
         options={options}
         onChange={handlerOnChange}
         initialOption={selected}
+        modifiers={{
+          z: 100,
+        }}
       />
     </div>
   )
