@@ -15,7 +15,7 @@ const Home = () => {
     } else {
       setTimeout(() => {
         window.location.replace(
-          `https://oauth.binary.com/oauth2/authorize?app_id=${process.env.NEXT_PUBLIC_APP_ID}`
+          `${process.env.NEXT_PUBLIC_OAT}${process.env.NEXT_PUBLIC_APP_ID}`
         )
       }, 1000)
     }
