@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 import { useRouter } from "next/navigation"
 
@@ -10,7 +11,6 @@ const Home = () => {
 
   const onClickLogin = () => {
     if (process.env.NODE_ENV === "development") {
-      // When in development mode, use the variable with the data in .env for quick login
       router.replace(process.env.NEXT_PUBLIC_DERIV || "")
     } else {
       setTimeout(() => {
@@ -39,8 +39,19 @@ const Home = () => {
         },
       }}
     >
-      <header className="flex w-full justify-between mx-5 h-20 items-center">
+      <header className="flex w-full justify-between h-20 items-center">
         <div>Rev Play</div>
+        <div className="">
+          <a href="https://deriv.com/">
+            <Image
+              className="w-16 h-16"
+              src="/brands/deriv.svg"
+              width="16"
+              height="16"
+              alt="deriv"
+            />
+          </a>
+        </div>
       </header>
 
       <div className="flex gap-5 justify-center">
