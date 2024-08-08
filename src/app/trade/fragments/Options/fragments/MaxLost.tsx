@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "+redux"
 import { rewrite_editables } from "+redux/reducer/slices/editables"
+import { set_amounts_and_renew_proposals } from "sockets/buyer/utils/set_amounts_and_create_proposals"
 
 import { CarouselSelector } from "./CarouselSelector"
 
@@ -32,27 +33,28 @@ const multipliers: { [key: number]: number } = {
 }
 
 export const MaxLost = () => {
-  const { selected } = useSelector((s) => s.editables.max_lost)
+  const { max_lost } = useSelector((s) => s.editables)
   const dispatch = useDispatch()
 
   const handlerOnChange = (selector: number) => {
     dispatch(
       rewrite_editables({
-        max_lost: {
-          selected: selector,
-          dopel_multiplier: multipliers[selector],
-        },
+        max_lost: selector,
+        multiplier: multipliers[selector],
       })
     )
+    set_amounts_and_renew_proposals()
   }
   return (
     <div className="flex flex-col gap-3 w-[400px] text-center">
       <h4>Max lost</h4>
-      <div>ideal: {ideal[selected]}</div>
+      <div>
+        ideal: {ideal[max_lost]} : {multipliers[max_lost]}
+      </div>
       <CarouselSelector
         options={options}
         onChange={handlerOnChange}
-        initialOption={selected}
+        initialOption={max_lost}
         modifiers={{
           z: 100,
         }}

@@ -44,10 +44,8 @@ const editables = {
 
   run_sockets_after_launch_app: false,
 
-  max_lost: {
-    selected: 7,
-    dopel_multiplier: 2.064, // 2,3
-  },
+  max_lost: 7,
+  multiplier: 0.35 / 52.16,
 }
 
 export type Editables = typeof editables
