@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "+redux"
 import { clean_info } from "+redux/reducer/slices/info"
 import { clean_purchases } from "+redux/reducer/slices/purchases"
 
-import { pausa, play } from "+local/utils/action_buttons"
+import { pausa, play, stop } from "+local/utils/action_buttons"
 
 import Image from "next/image"
 
@@ -40,17 +40,17 @@ export const ButtonPanel = () => {
           />
         </button>
       )}
-      {purchase_enabled && (
-        <button onClick={stop} className="panel-button">
-          <Image
-            className="w-6 h-6"
-            src="/icons/stop.svg"
-            width="8"
-            height="8"
-            alt="stop"
-          />
-        </button>
-      )}
+
+      <button onClick={stop} className="panel-button">
+        <Image
+          className="w-6 h-6"
+          src="/icons/stop.svg"
+          width="8"
+          height="8"
+          alt="stop"
+        />
+      </button>
+
       {!purchase_enabled && (
         <button onClick={clean} className="panel-button">
           <Image

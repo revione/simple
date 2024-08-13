@@ -6,8 +6,8 @@ import { set_initial_amount } from "sockets/buyer/utils/set_amounts"
 import { numFix } from "utils"
 
 export const set_multiplied_amount = () => {
-  const { amount, max_lost } = store.getState().editables
-  const new_amount = Number((amount * (max_lost + 2)).toFixed(2))
+  const { amount, multiplier } = store.getState().editables
+  const new_amount = Number((amount * (multiplier + 2)).toFixed(2))
   store.dispatch(rewrite_editables({ amount: new_amount }))
 }
 

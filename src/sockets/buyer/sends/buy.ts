@@ -10,43 +10,47 @@ import { true_is_purchase_running } from "+redux/reducer/slices/buyer"
 
 import { send } from "."
 
+const show_consoles = false
+
 export const buy = () => {
   const {
     internal: { contract_type },
-    app: { waiting_for_proposal }
+    app: { waiting_for_proposal },
   } = state
   const { purchase_enabled, purchase_running } = store.getState().buyer
 
   if (!purchase_enabled) {
-    // console.log(":: buy : purchase is not enabled")
+    show_consoles && console.log(":: buy : purchase is not enabled")
     return
   }
 
   if (purchase_running) {
-    console.log(":: buy : purchase is running")
+    show_consoles && console.log(":: buy : purchase is running")
     return
   }
 
   if (waiting_for_proposal) {
-    console.log(":: buy : waiting_for_proposal")
+    show_consoles && console.log(":: buy : waiting_for_proposal")
     return
   }
 
   if (!contract_type) {
-    console.log(`:: buy, contract_type is not defined`, { contract_type })
+    show_consoles &&
+      console.log(`:: buy, contract_type is not defined`, { contract_type })
     return
   }
 
   if (isEmpty(state.proposals[contract_type])) {
-    console.log(
-      `:: buy, proposal with contract_type "${contract_type}" is empty`,
-      {
-        contract_type,
-        proposals: state.proposals,
-        isEmpty: isEmpty(state.proposals[contract_type]),
-        [contract_type]: state.proposals[contract_type]
-      }
-    )
+    show_consoles &&
+      console.log(
+        `:: buy, proposal with contract_type "${contract_type}" is empty`,
+        {
+          contract_type,
+          proposals: state.proposals,
+          isEmpty: isEmpty(state.proposals[contract_type]),
+          [contract_type]: state.proposals[contract_type],
+        }
+      )
     return
   }
 
@@ -64,7 +68,7 @@ export const buy = () => {
 
   const data = {
     buy: state.proposals[contract_type].id,
-    price: state.proposals[contract_type].ask_price
+    price: state.proposals[contract_type].ask_price,
   }
 
   send(data)

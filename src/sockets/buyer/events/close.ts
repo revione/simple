@@ -1,13 +1,12 @@
 import { state } from "+local"
 import { store } from "+redux"
-import { disconnected_buyer_socket } from "+redux/reducer/slices/sockets"
 
 import connect from "sockets/buyer"
 
+import { disconnected_buyer_socket } from "+redux/reducer/slices/sockets"
+
 export const close = (event: Event) => {
-  if (state.logs.show_error_logs) {
-    store.dispatch(disconnected_buyer_socket())
-    console.log(":: socket buyer closed : ", { event })
-  }
+  console.trace("buyer close")
+  store.dispatch(disconnected_buyer_socket())
   if (state.reconnect) connect()
 }
