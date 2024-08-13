@@ -6,11 +6,9 @@ import { state } from "+local"
 // aqui vamos a poder enviar la data
 // sin que tengamos que escribir todo lo mismo una y otra vez
 export const send = (data: Object) => {
-  if (state.logs.show_send_logs)
-    console.log(":: socket observer candles send : ", data)
-  if (typeof state.sockets.observer === "undefined")
+  if (typeof state.sockets.candles === "undefined")
     return console.log("WebSocket is undefined")
-  state.sockets.observer.send(JSON.stringify(data))
+  state.sockets.candles.send(JSON.stringify(data))
 }
 
 // esta funcion es solo para hacer ping
@@ -35,7 +33,7 @@ export const subscribe_ohcl_with_history = () => {
     end: "latest",
     start: 1,
     style: "candles",
-    subscribe: 1
+    subscribe: 1,
   }
   send(message)
 }

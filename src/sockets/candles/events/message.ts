@@ -4,14 +4,14 @@ import {
   add_candle,
   add_candles,
   analysis,
-  remove_first_candle
+  remove_first_candle,
 } from "../utils"
 
 // Listen for messages
 export const message = (messageEvent: MessageEvent<string>) => {
   const data = JSON.parse(messageEvent.data) as Data
 
-  if (data.error) console.log("socket observer message : ", data)
+  if (data.error) console.log("socket candles message : ", data)
 
   const { msg_type } = data
 
@@ -29,7 +29,7 @@ export const message = (messageEvent: MessageEvent<string>) => {
       break
 
     default:
-      console.log(":: socket observer cangles message default : ", data)
+      console.log(":: socket candles message default : ", data)
       break
   }
 }

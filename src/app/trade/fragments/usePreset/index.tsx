@@ -4,16 +4,16 @@ import { state } from "+local"
 
 import { useDispatch, useSelector } from "+redux"
 
-import ws_observer from "sockets/observer_ticks"
+import ws_observer from "sockets/ticks"
 
 import {
   disabled_purchase,
-  false_is_purchase_running
+  false_is_purchase_running,
 } from "+redux/reducer/slices/buyer"
 
 import {
   disconnected_buyer_socket,
-  disconnected_ticks_socket
+  disconnected_ticks_socket,
 } from "+redux/reducer/slices/sockets"
 
 export const usePreset = () => {

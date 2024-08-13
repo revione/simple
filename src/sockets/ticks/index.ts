@@ -9,13 +9,13 @@ const url = process.env.NEXT_PUBLIC_BRO
 const uri = `${url}${app_id}`
 
 const ticks = () => {
-  console.log(":: socket observer ticks launched")
+  console.log(":: socket ticks launched")
   const ws = new WebSocket(uri)
   ws.onopen = open
   ws.onclose = close
   ws.onerror = error
   ws.onmessage = message
-  state.sockets.observer = ws
+  state.sockets.ticks = ws
 }
 
 export default ticks

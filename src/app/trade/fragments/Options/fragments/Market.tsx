@@ -3,9 +3,9 @@ import { rewrite_editables } from "+redux/reducer/slices/editables"
 
 import { set_amounts_and_renew_proposals } from "sockets/buyer/utils/set_amounts_and_create_proposals"
 import { useMemo } from "react"
-import { state } from "+local"
 
 import { CarouselSelector } from "./CarouselSelector"
+import { forget_all_and_subscribe } from "sockets/ticks/sends"
 
 const options = [
   "R_10",
@@ -35,7 +35,7 @@ export const Market = () => {
     if (symbol) {
       dispatch(rewrite_editables({ symbol }))
       set_amounts_and_renew_proposals()
-      state.sockets.observer?.close()
+      forget_all_and_subscribe()
     }
   }
 

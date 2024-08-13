@@ -15,15 +15,16 @@ import { usePreset } from "./fragments/usePreset"
 
 import { useActiveBuyer } from "./fragments/useActiveBuyer"
 
-import "./Trade.css"
 import { Market } from "./fragments/Options/fragments/Market"
 
-const AfterTrade = () => {
+import "./Trade.css"
+
+const BeforeLoadTrade = () => {
   usePreset()
   return <Trade />
 }
 
-export default AfterTrade
+export default BeforeLoadTrade
 
 const Trade = () => {
   useActiveBuyer()

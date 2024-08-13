@@ -4,7 +4,7 @@ import { useSelector } from "+redux"
 import { state } from "+local"
 
 import run_buyer from "sockets/buyer"
-import run_ticks from "sockets/observer_ticks"
+import run_ticks from "sockets/ticks"
 
 export const SocketsStatus = () => {
   const {
@@ -15,10 +15,9 @@ export const SocketsStatus = () => {
   const handleToggleTicks = () => {
     if (tickstConnected) {
       console.log("SocketsStatus Desconectando WS Ticks...")
-      state.sockets.observer?.close()
+      state.sockets.ticks?.close()
     } else {
       console.log("SocketsStatus Reconectando WS Ticks...")
-
       run_ticks()
     }
   }

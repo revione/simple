@@ -7,8 +7,7 @@ import { subscribe_history } from "../sends"
 
 // Connection opened
 export const open = (event: Event) => {
-  if (state.logs.show_open_logs)
-    console.log(":: socket observer ticks open : ", event)
+  console.trace("open ticks")
 
   store.dispatch(connected_ticks_socket())
 

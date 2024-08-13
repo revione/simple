@@ -29,9 +29,6 @@ export const message = (messageEvent: MessageEvent<string>) => {
     return
   }
 
-  // console.log(":: socket buyer data : ", data);
-  if (state.logs.show_message_logs) console.log(":: socket buyer message", data)
-
   const { msg_type } = data
 
   switch (msg_type) {

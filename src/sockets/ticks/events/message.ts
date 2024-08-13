@@ -7,7 +7,7 @@ export const message = (messageEvent: MessageEvent<string>) => {
 
   const data = JSON.parse(messageEvent.data)
 
-  if (data.error) console.log("socket observer ticks message : ", data)
+  if (data.error) console.log("socket ticks message : ", data)
 
   const { msg_type } = data
 
@@ -24,7 +24,7 @@ export const message = (messageEvent: MessageEvent<string>) => {
       break
 
     default:
-      console.log(":: socket observer ticks message default : ", data)
+      console.log(":: socket ticks message default : ", data)
       break
   }
 }

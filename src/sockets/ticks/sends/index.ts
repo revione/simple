@@ -4,11 +4,17 @@ import { state } from "+local"
 // here we gonna send the data
 // without to rewrite the same code
 export const send = (data: Object) => {
-  if (state.logs.show_send_logs)
-    console.log(":: socket observer ticks send : ", data)
-  if (typeof state.sockets.observer === "undefined")
-    return console.log("WebSocket observer ticks is undefined")
-  state.sockets.observer.send(JSON.stringify(data))
+  if (typeof state.sockets.ticks === "undefined")
+    return console.log("socket ticks is undefined")
+
+  if (state.sockets.ticks.readyState === WebSocket.CONNECTING)
+    return console.log(
+      "socket ticks is connecting.",
+      state.sockets.ticks.readyState
+    )
+
+  console.log(":: ticks send readyState ", state.sockets.ticks.readyState)
+  state.sockets.ticks.send(JSON.stringify(data))
 }
 
 // this function is just to ping with the time
@@ -31,7 +37,7 @@ export const subscribe_history = () => {
     end: "latest",
     start: 1,
     style: "ticks",
-    subscribe: 1
+    subscribe: 1,
   }
 
   send(message)
