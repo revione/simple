@@ -7,9 +7,6 @@ import { subscribe_history } from "../sends"
 
 // Connection opened
 export const open = (event: Event) => {
-  console.trace("open ticks")
-
   store.dispatch(connected_ticks_socket())
-
   subscribe_history()
 }

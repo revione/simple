@@ -9,11 +9,10 @@ export const send = (data: Object) => {
 
   if (state.sockets.ticks.readyState === WebSocket.CONNECTING)
     return console.log(
-      "socket ticks is connecting.",
+      "socket ticks is CONNECTING",
       state.sockets.ticks.readyState
     )
 
-  console.log(":: ticks send readyState ", state.sockets.ticks.readyState)
   state.sockets.ticks.send(JSON.stringify(data))
 }
 

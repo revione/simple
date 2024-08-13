@@ -29,6 +29,7 @@ export const usePreset = () => {
     purchase_enabled && dispatch(disabled_purchase())
 
     state.app.first_time_proposal_header = true
+    state.sockets.run_sockets = true
 
     run_sockets_after_launch_app && ws_observer()
   }, [])

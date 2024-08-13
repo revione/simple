@@ -9,6 +9,7 @@ const url = process.env.NEXT_PUBLIC_BRO
 const uri = `${url}${app_id}`
 
 const candles = () => {
+  if (!state.sockets.run_sockets) return
   console.log(" :: socket candles launched")
   const ws = new WebSocket(uri)
   ws.onopen = open

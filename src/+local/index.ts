@@ -1,4 +1,3 @@
-import ticks from "sockets/ticks"
 import type { Candle, Contract_type, OHLC, Proposal } from "types"
 
 const initialProposals = {
@@ -46,6 +45,7 @@ export const state = {
   },
 
   sockets: {
+    run_sockets: false,
     buyer: <WebSocket | undefined>undefined,
     ticks: <WebSocket | undefined>undefined,
     candles: <WebSocket | undefined>undefined,
