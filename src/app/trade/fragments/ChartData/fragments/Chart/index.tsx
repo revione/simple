@@ -1,9 +1,17 @@
+import {
+  memo,
+  useLayoutEffect,
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react"
 import { motion } from "framer-motion"
-import { memo, useLayoutEffect, useState, useRef } from "react"
-import update_circles from "./update_circles"
+
+import { calculateCirclePositions } from "./calculateCirclePositions"
 
 interface ChartProps {
-  yValues?: number[] // [ 5000, 4000, 3000, 4500, 3500, 5000, 4000, 3000, 4500, 3500, 5000, 4000, 3000, 4500, 3500 ]
+  yValues?: number[] // [5000, 4000, 3000, 4500, 3500, ...]
   circleRadius?: number
 }
 
@@ -16,35 +24,47 @@ const Chart = ({
 }: ChartProps) => {
   const color = "deeppink"
   const svgRef = useRef<SVGSVGElement>(null)
-  const [width, setWidth] = useState<number>(window.innerWidth * 0.5)
-  const [height, setHeight] = useState<number>(window.innerHeight * 0.5)
-
-  useLayoutEffect(() => {
-    const get_sizes = () => {
-      if (svgRef.current) {
-        setWidth(svgRef.current.clientWidth)
-        setHeight(svgRef.current.clientHeight)
-      }
-    }
-    get_sizes()
-    window.addEventListener("resize", get_sizes)
-    return () => {
-      window.removeEventListener("resize", get_sizes)
-    }
-  }, [svgRef.current])
-
-  const circles = update_circles({
-    width,
-    height,
-    yValues,
-    color,
-    circleRadius,
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth * 0.5,
+    height: window.innerHeight * 0.5,
   })
 
-  if (!circles) return <motion.div>There is not circles.</motion.div>
+  const updateDimensions = useCallback(() => {
+    if (svgRef.current) {
+      setDimensions({
+        width: svgRef.current.clientWidth,
+        height: svgRef.current.clientHeight,
+      })
+    }
+  }, [svgRef])
 
-  if (circles.length < 2)
-    return <motion.div>Set more than two circles</motion.div>
+  useLayoutEffect(() => {
+    updateDimensions()
+    window.addEventListener("resize", updateDimensions)
+    return () => {
+      window.removeEventListener("resize", updateDimensions)
+    }
+  }, [updateDimensions])
+
+  const circles = useMemo(
+    () =>
+      calculateCirclePositions({
+        width: dimensions.width,
+        height: dimensions.height,
+        yValues,
+        color,
+        circleRadius,
+      }),
+    [circleRadius, dimensions.height, dimensions.width, yValues]
+  )
+
+  if (!circles || circles.length < 2) {
+    return (
+      <motion.div>
+        {!circles ? "There are no circles." : "Set more than two circles"}
+      </motion.div>
+    )
+  }
 
   const linePoints = circles
     .map((circle) => `${circle.x},${circle.y}`)
@@ -55,40 +75,17 @@ const Chart = ({
       ref={svgRef}
       style={{ width: "100%", height: "100%" }}
       className="flex-1"
-      {...{
-        initial: {
-          opacity: 0,
-        },
-        animate: {
-          opacity: 1,
-          width,
-          height,
-          transition: {
-            duration: 0.5,
-          },
-        },
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
     >
-      {/*  */}
-
-      <>
-        <motion.path
-          d={`M ${linePoints}`}
-          fill="none"
-          stroke={color}
-          strokeWidth="1"
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: {
-              delay: 1.2,
-            },
-          }}
-        />
-      </>
-
+      <motion.path
+        d={`M ${linePoints}`}
+        fill="none"
+        stroke={color}
+        strokeWidth="1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 1.2 } }}
+      />
       {circles.map((circle, index) => (
         <motion.circle
           key={index}
@@ -96,19 +93,10 @@ const Chart = ({
           cy={circle.y}
           r={circle.radius}
           fill={circle.color}
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            transition: {
-              delay: 1,
-            },
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 1 } }}
         />
       ))}
-
-      {/*  */}
     </motion.svg>
   )
 }

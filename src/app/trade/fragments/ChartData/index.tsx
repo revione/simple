@@ -17,7 +17,11 @@ const ChartData = () => {
     }
   }, [])
 
-  return <Chart yValues={state_observer.lists.ticks} />
+  return (
+    <div className="h-[50vh]">
+      <Chart yValues={state_observer.lists.ticks} />
+    </div>
+  )
 }
 
 export default ChartData
