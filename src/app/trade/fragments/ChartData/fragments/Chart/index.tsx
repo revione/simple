@@ -15,13 +15,7 @@ interface ChartProps {
   circleRadius?: number
 }
 
-const Chart = ({
-  yValues = [
-    5000, 4000, 3000, 4500, 3500, 5000, 4000, 3000, 4500, 3500, 5000, 4000,
-    3000, 4500, 3500,
-  ],
-  circleRadius = 3,
-}: ChartProps) => {
+const Chart = ({ yValues = [], circleRadius = 3 }: ChartProps) => {
   const color = "deeppink"
   const svgRef = useRef<SVGSVGElement>(null)
   const [dimensions, setDimensions] = useState({
