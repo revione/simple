@@ -1,4 +1,5 @@
 import { state_observer } from "+local/lists"
+import { encontrarSecuenciasValidas } from "app/trade/fragments/ChartData/fragments/encontrarSecuenciasValidas"
 
 export const set_history = (data: {
   echo_req: any

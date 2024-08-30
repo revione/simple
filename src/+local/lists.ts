@@ -1,3 +1,5 @@
+import { verificarCondiciones } from "app/trade/fragments/ChartData/fragments/analisis"
+
 interface StateObserver {
   lists: {
     close_prices: number[]
@@ -20,7 +22,7 @@ export const state_observer: StateObserver = {
     high_prices: [],
     low_prices: [],
     open_prices: [],
-    ticks: []
+    ticks: [],
   },
   subscribers: [],
   subscribe(callback) {
@@ -34,11 +36,13 @@ export const state_observer: StateObserver = {
   },
   initTicks(ticks) {
     this.lists.ticks = ticks
+    verificarCondiciones(ticks)
     this.notify()
   },
   updateTicks(new_tick) {
     this.lists.ticks.shift()
     this.lists.ticks = [...this.lists.ticks, new_tick]
+    verificarCondiciones(this.lists.ticks)
     this.notify()
-  }
+  },
 }
