@@ -14,12 +14,10 @@ export const play = () => {
 }
 
 export const pausa = () => {
-  console.log(state)
   store.dispatch(disabled_purchase())
 }
 
 export const stop = () => {
-  console.log(state)
   store.dispatch(reset_amount())
   store.dispatch(disabled_purchase())
   forget_and_make_proposal()

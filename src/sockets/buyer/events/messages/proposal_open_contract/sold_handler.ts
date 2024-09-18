@@ -25,14 +25,14 @@ export const sold_handler = (contract: ProposalOpenContract) => {
   const { total_balance, purchase_type, custom_purchase, custom_balance } =
     store.getState().editables
 
-  const { max_loss_count, amount } = state.internal
+  const { amount } = state.internal
 
   info.total_profit = numFix(info.total_profit + profit)
 
   store.dispatch(
     rewrite_editables({
       total_balance: numFix(total_balance + profit),
-      custom_balance: numFix(custom_balance + profit)
+      custom_balance: numFix(custom_balance + profit),
     })
   )
 
@@ -45,13 +45,10 @@ export const sold_handler = (contract: ProposalOpenContract) => {
     (id) => id !== contract_id
   )
 
-  if (info.position === max_loss_count)
-    return console.log(":: process_new_purchase, max loss reached")
-
   const allow_new_buy = should_allow_new_buy({
     purchase_type,
     round_won_contracts: info.round_won_contracts,
-    custom_purchase
+    custom_purchase,
   })
 
   if (list_contracts_running.length === 0)
@@ -63,7 +60,7 @@ export const sold_handler = (contract: ProposalOpenContract) => {
 export const should_allow_new_buy = ({
   purchase_type,
   round_won_contracts,
-  custom_purchase
+  custom_purchase,
 }: {
   purchase_type: string
   round_won_contracts: number
@@ -78,7 +75,7 @@ export const should_allow_new_buy = ({
       return true
     default:
       console.warn(":: process_new_purchase, Unknown purchase type:", {
-        purchase_type
+        purchase_type,
       })
       return false
   }

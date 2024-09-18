@@ -17,8 +17,6 @@ export const state = {
     initial_amount: 0.35,
     amount: 0.35,
 
-    max_loss_count: 8,
-
     multiplicador1: 2.24,
     multiplicador2: 2.24,
     multiplicador3: 2.24,

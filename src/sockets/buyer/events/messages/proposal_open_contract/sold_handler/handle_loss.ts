@@ -18,7 +18,7 @@ export const handle_loss = ({
   info: State["info"]
   amount: number
 }) => {
-  const { max_loss_count } = state.internal
+  const max_lost = store.getState().editables.max_lost
   info.continue_won_contracts = 0
   info.round_loss_contracts++
   info.total_loss_contracts++
@@ -31,10 +31,10 @@ export const handle_loss = ({
 
   if (info.position > info.max_position) info.max_position = info.position
 
-  if (!(info.continue_loss_contracts < max_loss_count)) {
+  if (!(info.continue_loss_contracts < max_lost)) {
     store.dispatch(disabled_purchase())
     set_initial_amount()
-    console.log(":: limite alcanzado : ", max_loss_count)
+    console.log(":: limite alcanzado : ", max_lost) // TODO: show a notification.
   }
 }
 
