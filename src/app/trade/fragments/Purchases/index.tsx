@@ -15,7 +15,7 @@ const purchase_list = [
   "is_sold",
 ]
 
-const Purchases = () => {
+export default function Purchases() {
   const { ids, items } = useSelector((s) => s.purchases)
   const ref_purchases_element = useRef<HTMLDivElement>(null)
   const ref_first_time = useRef(true)
@@ -44,7 +44,7 @@ const Purchases = () => {
   }, [items])
 
   return (
-    <div className=" flex flex-col gap-2 ">
+    <div className="flex flex-col gap-2">
       <div className=" grid header-table grid-cols-8 gap-1 text-center">
         {purchase_list
           .filter((opcion) => opcion !== "is_sold")
@@ -81,5 +81,3 @@ const item_filter = (purchase: PurchaseRedux) =>
   }, {})
 
 const filter_label_text = (str: string) => str.replace(/_/g, " ")
-
-export default Purchases

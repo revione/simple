@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { useSelector } from "+redux"
 
-import "./Information.css"
 import { balance_function } from "../utils"
 import { Times } from "../Times"
 
@@ -14,7 +13,7 @@ export function Information() {
     continue_won_contracts,
     continue_loss_contracts,
     position,
-    max_position
+    max_position,
   } = useSelector((s) => s.info)
   const { custom_balance, amount, type_use_balance } = useSelector(
     (s) => s.editables
@@ -26,9 +25,9 @@ export function Information() {
 
   return (
     <div
-      className="information grid justify-items-start grid-cols-1 my-5 gap-0
-        sm:grid-cols-2 
-        lg:grid-cols-3 md:gap-10  "
+      className="information grid justify-items-start grid-cols-3 my-5 gap-0 
+        sm:grid-cols-2 lg:grid-cols-3 md:gap-10
+      "
     >
       <div className="flex flex-col gap-0.5 w-full">
         <div className="grid-2">

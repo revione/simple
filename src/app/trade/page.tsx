@@ -29,7 +29,7 @@ export default BeforeLoadTrade
 const Trade = () => {
   useActiveBuyer()
   return (
-    <div className={`trade flex flex-col gap-2 my-5 items-center mx-10`}>
+    <div className={`trade flex flex-col gap-2 py-5 items-center px-10 w-full`}>
       <Header />
       <motion.div
         className="flex items-center gap-3"

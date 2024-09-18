@@ -3,9 +3,15 @@ import { state_observer } from "+local/lists"
 
 export const makeDecision = () => {
   const { increasingTrend, decreasingTrend } = determineTrend(
-    state_observer.lists.ticks,
-    0.55
+    state_observer.lists.ticks.slice(-3),
+    0.8
   )
+
+  // console.log({
+  //   ticks: state_observer.lists.ticks.slice(-3),
+  //   increasingTrend,
+  //   decreasingTrend,
+  // })
 
   state.internal.contract_type = increasingTrend
     ? "CALL"

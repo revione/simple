@@ -10,15 +10,17 @@ export const Options = () => (
     <div className="mb-5">Opciones</div>
 
     <div className="flex flex-col gap-6 ml-3 w-max">
+      <div className="flex justify-between">
+        <Accounts />
+        <MaxLost />
+        <Sockets />
+      </div>
       <div className="flex gap-12">
         <Purchases />
         <Balance />
-        <MaxLost />
       </div>
       <div className="flex justify-between">
         <Duracion />
-        <Sockets />
-        <Accounts />
       </div>
     </div>
   </div>

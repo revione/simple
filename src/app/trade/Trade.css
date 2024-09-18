@@ -1,11 +1,5 @@
 /* Trade */
 
-.grid {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(8, 1fr);
-}
-
 .grid-2 {
   display: grid;
   gap: 3rem;
