@@ -34,13 +34,7 @@ const Trade = () => {
       <motion.div
         className="flex items-center gap-3"
         initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: {
-            duration: 2,
-            delay: 1,
-          },
-        }}
+        animate={{ opacity: 1, transition: { duration: 2, delay: 1 } }}
       >
         <div>
           <div className="flex items-center w-full">

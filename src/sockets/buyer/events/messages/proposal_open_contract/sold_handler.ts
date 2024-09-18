@@ -18,14 +18,12 @@ let list_contracts_running: number[] = []
 export const sold_handler = (contract: ProposalOpenContract) => {
   store.dispatch(false_is_purchase_running())
 
-  const { contract_id, profit, status, sell_price } = contract
+  const { contract_id, profit, status, sell_price, buy_price } = contract
 
   const info = { ...store.getState().info }
 
   const { total_balance, purchase_type, custom_purchase, custom_balance } =
     store.getState().editables
-
-  const { amount } = state.internal
 
   info.total_profit = numFix(info.total_profit + profit)
 
@@ -38,8 +36,8 @@ export const sold_handler = (contract: ProposalOpenContract) => {
 
   info.total_contracts++
 
-  if (status === "lost") handle_loss({ info, amount })
-  if (status === "won") handle_win({ info, sell_price, amount })
+  if (status === "lost") handle_loss({ info })
+  if (status === "won") handle_win({ info, sell_price })
 
   list_contracts_running = list_contracts_running.filter(
     (id) => id !== contract_id

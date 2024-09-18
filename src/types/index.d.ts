@@ -255,6 +255,7 @@ export interface PurchaseRedux extends AddPurchaseRedux {
   status?: string
   contract_type?: string
   position?: number
+  continues?: number
 }
 
 // Proposal

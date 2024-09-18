@@ -6,6 +6,7 @@ const Purchase = ({
     buy_price,
     payout,
     profit,
+    continues,
     profit_percentage,
     sell_price,
     status,
@@ -17,14 +18,15 @@ const Purchase = ({
 }) => (
   <div
     className={`
-      grid grid-cols-8 gap-1 cursor-default
+      grid grid-cols-9 gap-1 cursor-default text-center
       ${is_sold && "sold"}
       ${status} `}
   >
-    {position && <div>{position}</div>}
+    {position && <div className="text-left">{position}</div>}
     {buy_price && <div>{buy_price}</div>}
     {payout && <div>{payout}</div>}
     {profit && <div>{profit}</div>}
+    <div>{continues}</div>
     <div>
       {(profit_percentage &&
         profit_percentage > 0 &&

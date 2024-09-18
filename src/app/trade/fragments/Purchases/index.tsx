@@ -8,6 +8,7 @@ const purchase_list = [
   "buy_price",
   "payout",
   "profit",
+  "continues",
   "profit_percentage",
   "sell_price",
   "status",
@@ -45,7 +46,7 @@ export default function Purchases() {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className=" grid header-table grid-cols-8 gap-1 text-center">
+      <div className="grid header-table grid-cols-9 gap-1 text-center">
         {purchase_list
           .filter((opcion) => opcion !== "is_sold")
           .map((opcion) => (
@@ -59,7 +60,7 @@ export default function Purchases() {
       </div>
       <div
         ref={ref_purchases_element}
-        className=" purchases flex flex-col gap-0.5 overflow-scroll h-[14vh] "
+        className="purchases flex flex-col gap-0.5 overflow-scroll h-[14vh] "
       >
         {ids.length > 0 &&
           ids.map((contract_id: number) => (

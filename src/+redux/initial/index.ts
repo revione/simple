@@ -64,6 +64,7 @@ const info = {
   total_loss_contracts: 0,
   total_profit: 0,
   total_won_contracts: 0,
+  continues: 0,
 }
 
 export const purchases = {

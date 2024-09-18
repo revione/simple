@@ -11,21 +11,15 @@ export const set_multiplied_amount = () => {
   store.dispatch(rewrite_editables({ amount: new_amount }))
 }
 
-export const handle_loss = ({
-  info,
-  amount,
-}: {
-  info: State["info"]
-  amount: number
-}) => {
-  const max_lost = store.getState().editables.max_lost
+export const handle_loss = ({ info }: { info: State["info"] }) => {
+  const { max_lost, amount } = store.getState().editables
   info.continue_won_contracts = 0
   info.round_loss_contracts++
   info.total_loss_contracts++
   info.continue_loss_contracts++
   info.position++
+
   state.info.total_lost = numFix(amount + state.info.total_lost)
-  state.info.accumulate_lost = numFix(amount + state.info.accumulate_lost)
 
   check_balance()
 

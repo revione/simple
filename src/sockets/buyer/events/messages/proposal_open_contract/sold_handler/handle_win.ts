@@ -1,5 +1,5 @@
 import { state } from "+local"
-import { State } from "+redux"
+import { State, store } from "+redux"
 import { numFix } from "utils"
 import { set_initial_amount } from "sockets/buyer/utils/set_amounts"
 import { forget_all } from "sockets/buyer/sends"
@@ -7,12 +7,11 @@ import { forget_all } from "sockets/buyer/sends"
 export const handle_win = ({
   info,
   sell_price,
-  amount
 }: {
   info: State["info"]
   sell_price: number
-  amount: number
 }) => {
+  const { amount } = store.getState().editables
   info.continue_won_contracts++
   info.round_won_contracts++
   info.total_won_contracts++
