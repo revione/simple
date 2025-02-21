@@ -16,12 +16,11 @@ const Home = () => {
     ) {
       router.replace(process.env.NEXT_PUBLIC_DERIV)
     } else {
-      alert("was")
-      // setTimeout(() => {
-      //   window.location.replace(
-      //     `${process.env.NEXT_PUBLIC_OAT}${process.env.NEXT_PUBLIC_APP_ID}`
-      //   )
-      // }, 1000)
+      setTimeout(() => {
+        window.location.replace(
+          `${process.env.NEXT_PUBLIC_OAT}${process.env.NEXT_PUBLIC_APP_ID}`
+        )
+      }, 1000)
     }
   }
 
