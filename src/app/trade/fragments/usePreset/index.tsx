@@ -25,7 +25,7 @@ export const usePreset = () => {
   const { deriv } = useSelector(s => s.access)
 
   useEffect(() => {
-    if (deriv) {
+    if (deriv?.length === 0) {
       router.replace(`/`)
     }
   }, [deriv, router])
