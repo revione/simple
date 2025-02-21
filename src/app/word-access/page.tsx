@@ -14,14 +14,12 @@ const WordAccess = () => {
   const searchParams = useSearchParams()
 
   const [attemptsLeft, setAttemptsLeft] = useState(3)
-  const [redirectPath, setRedirectPath] = useState("/deriv") // URL por defecto
+  const [storedParams, setStoredParams] = useState<string>("") // Aquí guardamos los parámetros originales
 
   useEffect(() => {
-    // Guarda los parámetros de la URL al entrar a la página
-    const nextPage = searchParams.get("next")
-    if (nextPage) {
-      setRedirectPath(`${nextPage}?${searchParams.toString()}`)
-    }
+    // Guarda los parámetros originales de la URL cuando el usuario entra a la página
+    const params = searchParams.toString()
+    setStoredParams(params ? `?${params}` : "") // Agrega "?" solo si hay parámetros
   }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +30,7 @@ const WordAccess = () => {
       setMessage({ text: response.message, type: "success" })
 
       setTimeout(() => {
-        router.push(redirectPath) // Redirige con los parámetros guardados
+        router.push(`/deriv${storedParams}`) // Redirige con los parámetros originales
       }, 500)
     } else {
       if (attemptsLeft - 1 === 0) {
@@ -42,14 +40,14 @@ const WordAccess = () => {
         })
 
         setTimeout(() => {
-          router.replace("/") // Redirige a home sin los parámetros
+          router.replace("/")
         }, 1000)
       } else {
         setMessage({
           text: `${response.message} Intentos restantes: ${attemptsLeft - 1}`,
           type: "error"
         })
-        setAttemptsLeft(prev => prev - 1) // Reduce los intentos
+        setAttemptsLeft(prev => prev - 1)
       }
     }
   }
