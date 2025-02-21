@@ -22,17 +22,17 @@ export const state_observer: StateObserver = {
     high_prices: [],
     low_prices: [],
     open_prices: [],
-    ticks: [],
+    ticks: []
   },
   subscribers: [],
   subscribe(callback) {
     this.subscribers.push(callback)
   },
   unsubscribe(callback) {
-    this.subscribers = this.subscribers.filter((sub) => sub !== callback)
+    this.subscribers = this.subscribers.filter(sub => sub !== callback)
   },
   notify() {
-    this.subscribers.forEach((callback) => callback())
+    this.subscribers.forEach(callback => callback())
   },
   initTicks(ticks) {
     this.lists.ticks = ticks
@@ -44,5 +44,5 @@ export const state_observer: StateObserver = {
     this.lists.ticks = [...this.lists.ticks, new_tick]
     // verificarCondiciones(this.lists.ticks)
     this.notify()
-  },
+  }
 }

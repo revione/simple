@@ -7,7 +7,7 @@ interface Props {
 
 const useSize = ({
   height: _height = window.innerHeight * 0.85,
-  width: _width = window.innerWidth * 0.5,
+  width: _width = window.innerWidth * 0.5
 }: Props) => {
   const [width, setWidth] = useState(_width)
   const [height, setHeight] = useState(_height)

@@ -13,13 +13,13 @@ export function Information() {
     continue_won_contracts,
     continue_loss_contracts,
     position,
-    max_position,
-  } = useSelector((s) => s.info)
+    max_position
+  } = useSelector(s => s.info)
   const { custom_balance, amount, type_use_balance } = useSelector(
-    (s) => s.editables
+    s => s.editables
   )
 
-  const { total_balance } = useSelector((s) => s.editables)
+  const { total_balance } = useSelector(s => s.editables)
 
   const balance = type_use_balance === "custom" ? custom_balance : total_balance
 
@@ -87,7 +87,7 @@ export function Information() {
 }
 
 const CountDown = () => {
-  const { random_seconds_wait } = useSelector((s) => s.info)
+  const { random_seconds_wait } = useSelector(s => s.info)
 
   const [seconds, setSeconds] = useState<number | string>(0)
 

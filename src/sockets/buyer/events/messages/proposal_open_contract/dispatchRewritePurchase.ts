@@ -31,7 +31,7 @@ export const dispatchRewritePurchase = (contract: ProposalOpenContract) => {
     contract_type: contract.contract_type,
     is_sold: contract.is_sold,
     position: store.getState().info.position,
-    continues,
+    continues
   }
 
   store.dispatch(rewrite_purchase(data_for_update_purchase))

@@ -19,15 +19,15 @@ const options = [
   "1HZ75V",
   "1HZ100V",
   "RDBEAR",
-  "RDBULL",
+  "RDBULL"
 ]
 
 export const Market = () => {
   const dispatch = useDispatch()
-  const { symbol } = useSelector((s) => s.editables)
+  const { symbol } = useSelector(s => s.editables)
 
   const defaultSymbol = useMemo(
-    () => options.find((option) => option === symbol),
+    () => options.find(option => option === symbol),
     [symbol]
   )
 

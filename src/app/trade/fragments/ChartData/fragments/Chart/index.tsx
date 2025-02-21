@@ -4,7 +4,7 @@ import {
   useState,
   useRef,
   useCallback,
-  useMemo,
+  useMemo
 } from "react"
 import { motion } from "framer-motion"
 
@@ -20,14 +20,14 @@ const Chart = ({ yValues = [], circleRadius = 3 }: ChartProps) => {
   const svgRef = useRef<SVGSVGElement>(null)
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth * 0.5,
-    height: window.innerHeight * 0.5,
+    height: window.innerHeight * 0.5
   })
 
   const updateDimensions = useCallback(() => {
     if (svgRef.current) {
       setDimensions({
         width: svgRef.current.clientWidth,
-        height: svgRef.current.clientHeight,
+        height: svgRef.current.clientHeight
       })
     }
   }, [svgRef])
@@ -47,7 +47,7 @@ const Chart = ({ yValues = [], circleRadius = 3 }: ChartProps) => {
         height: dimensions.height,
         yValues,
         color,
-        circleRadius,
+        circleRadius
       }),
     [circleRadius, dimensions.height, dimensions.width, yValues]
   )
@@ -60,9 +60,7 @@ const Chart = ({ yValues = [], circleRadius = 3 }: ChartProps) => {
     )
   }
 
-  const linePoints = circles
-    .map((circle) => `${circle.x},${circle.y}`)
-    .join(" ")
+  const linePoints = circles.map(circle => `${circle.x},${circle.y}`).join(" ")
 
   return (
     <motion.svg

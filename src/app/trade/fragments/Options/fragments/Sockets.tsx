@@ -4,7 +4,7 @@ import { useDispatch } from "+redux"
 
 import {
   active_run_sockets_after_launch_app,
-  desactive_run_sockets_after_launch_app,
+  desactive_run_sockets_after_launch_app
 } from "+redux/reducer/slices/editables"
 import ToggleSwitch from "./ToggleSwitch"
 
@@ -13,7 +13,7 @@ export const Sockets = () => {
   const [active, setActive] = useState(false)
 
   const handleToggle = () => {
-    setActive((s) => !s)
+    setActive(s => !s)
     if (!active) {
       dispatch(active_run_sockets_after_launch_app())
     } else {

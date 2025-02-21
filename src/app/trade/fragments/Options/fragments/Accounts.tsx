@@ -23,7 +23,7 @@ type Option = SingleValue<{
 
 export const Accounts = () => {
   const dispatch = useDispatch()
-  const { deriv: _deriv, actualAccount } = useSelector((s) => s.access)
+  const { deriv: _deriv, actualAccount } = useSelector(s => s.access)
 
   const [selectedAccount, setSelectedAccount] = useState<Account>(
     actualAccount || ({} as Account)
@@ -44,10 +44,10 @@ export const Accounts = () => {
     }
   }
 
-  const options = _deriv.map((account) => ({
+  const options = _deriv.map(account => ({
     value: account,
     label: `${account.acct} (${account.cur})`,
-    isDisabled: selectedAccount ? account.acct === selectedAccount.acct : false,
+    isDisabled: selectedAccount ? account.acct === selectedAccount.acct : false
   }))
 
   return (
@@ -62,7 +62,7 @@ export const Accounts = () => {
             selectedAccount
               ? {
                   value: selectedAccount,
-                  label: `${selectedAccount.acct} (${selectedAccount.cur})`,
+                  label: `${selectedAccount.acct} (${selectedAccount.cur})`
                 }
               : null
           }

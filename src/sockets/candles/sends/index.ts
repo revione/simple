@@ -33,7 +33,7 @@ export const subscribe_ohcl_with_history = () => {
     end: "latest",
     start: 1,
     style: "candles",
-    subscribe: 1,
+    subscribe: 1
   }
   send(message)
 }

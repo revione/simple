@@ -35,8 +35,8 @@ const Home = () => {
         opacity: 1,
         transition: {
           duration: 2,
-          delay: 0.5,
-        },
+          delay: 0.5
+        }
       }}
     >
       <header className="flex w-full justify-between h-20 items-center">

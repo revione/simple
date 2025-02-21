@@ -16,7 +16,7 @@ const ideal: { [key: number]: number } = {
   7: 52,
   8: 108,
   9: 223,
-  10: 461,
+  10: 461
 }
 
 const multipliers: { [key: number]: number } = {
@@ -29,18 +29,18 @@ const multipliers: { [key: number]: number } = {
   7: 0.35 / 52,
   8: 0.35 / 108,
   9: 0.35 / 223,
-  10: 0.35 / 470,
+  10: 0.35 / 470
 }
 
 export const MaxLost = () => {
-  const { max_lost } = useSelector((s) => s.editables)
+  const { max_lost } = useSelector(s => s.editables)
   const dispatch = useDispatch()
 
   const handlerOnChange = (selector: number) => {
     dispatch(
       rewrite_editables({
         max_lost: selector,
-        multiplier: multipliers[selector],
+        multiplier: multipliers[selector]
       })
     )
     set_amounts_and_renew_proposals()
@@ -56,7 +56,7 @@ export const MaxLost = () => {
         onChange={handlerOnChange}
         initialOption={max_lost}
         modifiers={{
-          z: 100,
+          z: 100
         }}
       />
     </div>

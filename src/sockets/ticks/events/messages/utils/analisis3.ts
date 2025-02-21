@@ -16,8 +16,8 @@ export const makeDecision = () => {
   state.internal.contract_type = increasingTrend
     ? "CALL"
     : decreasingTrend
-    ? "PUT"
-    : ""
+      ? "PUT"
+      : ""
 }
 
 const determineTrend = (data: number[], threshold: number) => {

@@ -8,7 +8,7 @@ const ChartData = () => {
 
   useEffect(() => {
     const handleUpdate = () => {
-      setUpdate((prev) => !prev)
+      setUpdate(prev => !prev)
     }
 
     state_observer.subscribe(handleUpdate)

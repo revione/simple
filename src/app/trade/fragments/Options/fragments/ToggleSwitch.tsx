@@ -3,7 +3,7 @@ import React, { useState } from "react"
 const ToggleSwitch = ({
   text,
   active,
-  onChange,
+  onChange
 }: {
   text?: string
   active: boolean
@@ -26,7 +26,7 @@ const ToggleSwitch = ({
       />
       <div
         style={{
-          backgroundColor: isChecked ? "#9333ea" : "#E5E7EB",
+          backgroundColor: isChecked ? "#9333ea" : "#E5E7EB"
         }}
         className="relative w-11 h-6 rounded-full transition-all
           peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 
@@ -34,7 +34,7 @@ const ToggleSwitch = ({
       >
         <div
           style={{
-            left: isChecked ? "calc(100% - 22px)" : "2px",
+            left: isChecked ? "calc(100% - 22px)" : "2px"
           }}
           className="absolute top-[2px] bg-white border border-gray-300 rounded-full h-5 w-5 
           peer-checked:border-white transition-all"

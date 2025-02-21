@@ -27,7 +27,7 @@ export const add_candle = (candle: CandleAddCandle) => {
 }
 
 export const add_candles = (candles: Candle[]) => {
-  candles.forEach((candle) => {
+  candles.forEach(candle => {
     add_candle(candle)
   })
 }

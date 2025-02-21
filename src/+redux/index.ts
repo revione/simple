@@ -2,7 +2,7 @@ import type { TypedUseSelectorHook } from "react-redux"
 
 import {
   useDispatch as useReduxDispatch,
-  useSelector as useReduxSelector,
+  useSelector as useReduxSelector
 } from "react-redux"
 
 import { configureStore } from "@reduxjs/toolkit"
@@ -15,7 +15,7 @@ import { middleware } from "./middleware"
 export const store = configureStore({
   reducer,
   devTools: process.env.NODE_ENV !== "production",
-  middleware,
+  middleware
 })
 
 export const persistor = persistStore(store)

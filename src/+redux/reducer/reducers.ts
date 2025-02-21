@@ -13,7 +13,7 @@ const reducers = combineReducers({
   editables,
   info,
   purchases,
-  sockets,
+  sockets
 })
 
 export default reducers

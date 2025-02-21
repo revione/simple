@@ -15,7 +15,7 @@ const show_consoles = false
 export const buy = () => {
   const {
     internal: { contract_type },
-    app: { waiting_for_proposal },
+    app: { waiting_for_proposal }
   } = state
   const { purchase_enabled, purchase_running } = store.getState().buyer
 
@@ -48,7 +48,7 @@ export const buy = () => {
           contract_type,
           proposals: state.proposals,
           isEmpty: isEmpty(state.proposals[contract_type]),
-          [contract_type]: state.proposals[contract_type],
+          [contract_type]: state.proposals[contract_type]
         }
       )
     return
@@ -68,7 +68,7 @@ export const buy = () => {
 
   const data = {
     buy: state.proposals[contract_type].id,
-    price: state.proposals[contract_type].ask_price,
+    price: state.proposals[contract_type].ask_price
   }
 
   send(data)

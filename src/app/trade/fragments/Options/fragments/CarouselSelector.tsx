@@ -15,7 +15,7 @@ export const CarouselSelector = ({
   onChange,
   initialOption,
 
-  modifiers,
+  modifiers
 }: CarouselSelectorProps) => {
   const initialIndex = options.indexOf(initialOption)
   const initialAngle = (initialIndex / options.length) * 360
@@ -126,7 +126,7 @@ export const CarouselSelector = ({
     (event: MouseEvent) => {
       if (isDragging) {
         const dx = event.clientX - startX
-        setAngle((prevAngle) => prevAngle + dx * 0.3)
+        setAngle(prevAngle => prevAngle + dx * 0.3)
         setStartX(event.clientX)
       }
     },
@@ -203,7 +203,7 @@ export const CarouselSelector = ({
                 top: "50%",
                 left: "50%",
                 transform: `translate(-50%, -50%) rotateY(${itemAngle}deg) translateZ(${z}px)`,
-                opacity,
+                opacity
               }}
             >
               {item}

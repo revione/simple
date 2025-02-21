@@ -7,7 +7,7 @@ const sockets_slice = createSlice({
   name: "sockets",
   initialState: initial.sockets,
   reducers: {
-    connected_ticks_socket: (state) => ({
+    connected_ticks_socket: state => ({
       ...state,
       ticks: {
         ...state.ticks,
@@ -15,7 +15,7 @@ const sockets_slice = createSlice({
       }
     }),
 
-    disconnected_ticks_socket: (state) => ({
+    disconnected_ticks_socket: state => ({
       ...state,
       ticks: {
         ...state.ticks,
@@ -23,7 +23,7 @@ const sockets_slice = createSlice({
       }
     }),
 
-    connected_buyer_socket: (state) => ({
+    connected_buyer_socket: state => ({
       ...state,
       buyer: {
         ...state.buyer,
@@ -31,7 +31,7 @@ const sockets_slice = createSlice({
       }
     }),
 
-    disconnected_buyer_socket: (state) => ({
+    disconnected_buyer_socket: state => ({
       ...state,
       buyer: {
         ...state.buyer,

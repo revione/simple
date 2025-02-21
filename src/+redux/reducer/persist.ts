@@ -17,7 +17,7 @@ const createNoopStorage = () => {
     },
     removeItem(_key: string): Promise<void> {
       return Promise.resolve()
-    },
+    }
   }
 }
 const storage =
@@ -27,7 +27,7 @@ const storage =
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage
 }
 
 export const reducer = persistReducer(persistConfig, reducers)

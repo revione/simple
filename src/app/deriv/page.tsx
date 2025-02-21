@@ -10,13 +10,13 @@ import { useDispatch, useSelector } from "+redux"
 const Deriv = () => {
   const dispatch = useDispatch()
   const router = useRouter()
-  const { actualAccount } = useSelector((state) => state.access)
+  const { actualAccount } = useSelector(state => state.access)
 
   const parseQueryParams = useCallback(() => {
     const paramsObject: Record<string, string> = {}
     const paramPairs = window.location.search.slice(1).split("&")
 
-    paramPairs.forEach((paramPair) => {
+    paramPairs.forEach(paramPair => {
       const [name, value] = paramPair.split("=")
       paramsObject[name] = value
     })
@@ -39,7 +39,7 @@ const Deriv = () => {
       const newObj = {
         acct: queryParams[acctKey],
         cur: queryParams[curKey],
-        token: queryParams[tokenKey],
+        token: queryParams[tokenKey]
       }
 
       resultArray.push(newObj)

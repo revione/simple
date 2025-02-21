@@ -6,7 +6,7 @@ import { forget_all } from "sockets/buyer/sends"
 
 export const handle_win = ({
   info,
-  sell_price,
+  sell_price
 }: {
   info: State["info"]
   sell_price: number

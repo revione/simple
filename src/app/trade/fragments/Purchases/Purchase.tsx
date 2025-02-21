@@ -11,8 +11,8 @@ const Purchase = ({
     sell_price,
     status,
     contract_type,
-    is_sold,
-  },
+    is_sold
+  }
 }: {
   purchase: Partial<PurchaseRedux>
 }) => (

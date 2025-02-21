@@ -4,7 +4,7 @@ import {
   useState,
   useRef,
   useCallback,
-  useMemo,
+  useMemo
 } from "react"
 import { motion } from "framer-motion"
 
@@ -27,23 +27,23 @@ const calculateSMA = (data: number[], period: number): number[] => {
 const Chart = ({
   yValues = [
     5000, 4000, 3000, 4500, 3500, 5000, 4000, 3000, 4500, 3500, 5000, 4000,
-    3000, 4500, 3500,
+    3000, 4500, 3500
   ],
   circleRadius = 3,
-  smaPeriod = 5, // Usamos un periodo de 5 por defecto para el SMA
+  smaPeriod = 5 // Usamos un periodo de 5 por defecto para el SMA
 }: ChartProps) => {
   const color = "skyblue"
   const svgRef = useRef<SVGSVGElement>(null)
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth * 0.5,
-    height: window.innerHeight * 0.5,
+    height: window.innerHeight * 0.5
   })
 
   const updateDimensions = useCallback(() => {
     if (svgRef.current) {
       setDimensions({
         width: svgRef.current.clientWidth,
-        height: svgRef.current.clientHeight,
+        height: svgRef.current.clientHeight
       })
     }
   }, [svgRef])
@@ -80,7 +80,7 @@ const Chart = ({
       return {
         x: xPosition,
         y: yPosition,
-        radius: radius,
+        radius: radius
       }
     })
   }, [circleRadius, dimensions.height, dimensions.width, yValues, smaPeriod])
@@ -93,9 +93,7 @@ const Chart = ({
     )
   }
 
-  const linePoints = circles
-    .map((circle) => `${circle.x},${circle.y}`)
-    .join(" ")
+  const linePoints = circles.map(circle => `${circle.x},${circle.y}`).join(" ")
 
   const midYPosition = dimensions.height / 2
 

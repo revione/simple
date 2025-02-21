@@ -9,8 +9,8 @@ import run_ticks from "sockets/ticks"
 export const SocketsStatus = () => {
   const {
     buyer: { connected: buyerConnected },
-    ticks: { connected: tickstConnected },
-  } = useSelector((s) => s.sockets)
+    ticks: { connected: tickstConnected }
+  } = useSelector(s => s.sockets)
 
   const handleToggleTicks = () => {
     if (tickstConnected) {

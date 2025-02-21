@@ -13,7 +13,7 @@ export type ChangeEventHTMLInputElement = React.ChangeEvent<HTMLInputElement>
 
 export const Purchases = () => {
   const dispatch = useDispatch()
-  const { purchase_type, custom_purchase } = useSelector((s) => s.editables)
+  const { purchase_type, custom_purchase } = useSelector(s => s.editables)
 
   const [multipleCount, setMultipleCount] = useState(custom_purchase)
   const [selectedOption, setSelectedOption] =
@@ -62,7 +62,7 @@ export const Purchases = () => {
     <div className="flex flex-col gap-5">
       <div>Purchases</div>
       <div className="flex gap-5">
-        {items.map((item) => (
+        {items.map(item => (
           <div key={item.key} className="flex flex-col gap-3 text-center">
             <div>
               <input
@@ -82,7 +82,7 @@ export const Purchases = () => {
                     className="text-center mt-1"
                     value={item.count}
                     onChange={handleMultipleCountChange}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   />
                 ) : (
                   <div className="text-center mt-1">{item.count}</div>

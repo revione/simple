@@ -9,7 +9,7 @@ import Image from "next/image"
 
 export const ButtonPanel = () => {
   const dispatch = useDispatch()
-  const { purchase_enabled } = useSelector((s) => s.buyer)
+  const { purchase_enabled } = useSelector(s => s.buyer)
 
   const clean = () => {
     dispatch(clean_purchases())

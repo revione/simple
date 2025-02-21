@@ -7,13 +7,13 @@ const buyer_slice = createSlice({
   name: "purchases",
   initialState: initial.buyer,
   reducers: {
-    enable_purchase: (state) => ({ ...state, purchase_enabled: true }),
+    enable_purchase: state => ({ ...state, purchase_enabled: true }),
 
-    disabled_purchase: (state) => ({ ...state, purchase_enabled: false }),
+    disabled_purchase: state => ({ ...state, purchase_enabled: false }),
 
-    true_is_purchase_running: (state) => ({ ...state, purchase_running: true }),
+    true_is_purchase_running: state => ({ ...state, purchase_running: true }),
 
-    false_is_purchase_running: (state) => ({
+    false_is_purchase_running: state => ({
       ...state,
       purchase_running: false
     })

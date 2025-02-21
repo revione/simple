@@ -13,7 +13,7 @@ export const calculateCirclePositions = ({
   width,
   yValues,
   color,
-  circleRadius,
+  circleRadius
 }: Props) => {
   const highestValue = Math.max(...yValues)
   const lowestValue = Math.min(...yValues)
@@ -27,7 +27,7 @@ export const calculateCirclePositions = ({
 
     if (contracts.length === 0) return
 
-    const validContracts = contracts.filter((contract) =>
+    const validContracts = contracts.filter(contract =>
       yValues.includes(contract.tick)
     )
 
@@ -40,7 +40,7 @@ export const calculateCirclePositions = ({
     let radius = circleRadius
     let currentColor = color
 
-    state.grafica.compras.some((contract) => {
+    state.grafica.compras.some(contract => {
       if (contract.tick === tickValue) {
         currentColor = pickColor(contract.type, color)
         if (currentColor !== color) {
@@ -62,7 +62,7 @@ export const calculateCirclePositions = ({
       x: xPosition,
       y: yPosition,
       color: currentColor,
-      radius: radius,
+      radius: radius
     }
   })
 }

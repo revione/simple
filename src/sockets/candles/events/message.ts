@@ -4,7 +4,7 @@ import {
   add_candle,
   add_candles,
   analysis,
-  remove_first_candle,
+  remove_first_candle
 } from "../utils"
 
 // Listen for messages

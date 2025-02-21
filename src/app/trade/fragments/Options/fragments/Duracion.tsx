@@ -18,7 +18,7 @@ const options_duration_unit: Option[] = [
   { value: "t", label: "ticks" },
   { value: "s", label: "seconds" },
   { value: "m", label: "minutes" },
-  { value: "h", label: "hours" },
+  { value: "h", label: "hours" }
 ]
 
 type DurationUnit = "ticks" | "seconds" | "minutes" | "hours"
@@ -30,16 +30,15 @@ const limits_duration_units: Record<
   ticks: { min: 1, max: 10 },
   seconds: { min: 15, max: 59 },
   minutes: { min: 1, max: 59 },
-  hours: { min: 1, max: 23 },
+  hours: { min: 1, max: 23 }
 }
 
 export const Duracion = () => {
   const dispatch = useDispatch()
-  const { duration, duration_unit } = useSelector((state) => state.editables)
+  const { duration, duration_unit } = useSelector(state => state.editables)
   const [actualUnit, setActualUnit] = useState<DurationUnit>("ticks")
   const defaultDurationUnit = useMemo(
-    () =>
-      options_duration_unit.find((option) => option.value === duration_unit),
+    () => options_duration_unit.find(option => option.value === duration_unit),
     [duration_unit]
   )
 
@@ -58,7 +57,7 @@ export const Duracion = () => {
       setActualUnit(newUnit)
       setEditables({
         [actionMeta.name || ""]: option?.value,
-        duration: minDuration,
+        duration: minDuration
       })
     }
   }

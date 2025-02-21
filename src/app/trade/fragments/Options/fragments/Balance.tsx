@@ -15,7 +15,7 @@ export type ChangeEventHTMLInputElement = React.ChangeEvent<HTMLInputElement>
 export const Balance = () => {
   const dispatch = useDispatch()
   const { total_balance, custom_balance, type_use_balance } = useSelector(
-    (state) => state.editables
+    state => state.editables
   )
 
   const [selectedOption, setSelectedOption] =

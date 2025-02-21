@@ -22,7 +22,7 @@ export const parseQueryParams = () => {
   const paramPairs = queryStringWithoutQuestionMark.split("&")
   const paramsObject = {} as Record<string, string>
 
-  paramPairs.forEach((paramPair) => {
+  paramPairs.forEach(paramPair => {
     const [name, value] = paramPair.split("=")
     paramsObject[name] = value
   })

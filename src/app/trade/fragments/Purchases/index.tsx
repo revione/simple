@@ -13,11 +13,11 @@ const purchase_list = [
   "sell_price",
   "status",
   "contract_type",
-  "is_sold",
+  "is_sold"
 ]
 
 export default function Purchases() {
-  const { ids, items } = useSelector((s) => s.purchases)
+  const { ids, items } = useSelector(s => s.purchases)
   const ref_purchases_element = useRef<HTMLDivElement>(null)
   const ref_first_time = useRef(true)
 
@@ -30,7 +30,7 @@ export default function Purchases() {
     const scroll = () => {
       current.scroll({
         top: scrollHeight,
-        behavior: "smooth",
+        behavior: "smooth"
       })
     }
 
@@ -48,8 +48,8 @@ export default function Purchases() {
     <div className="flex flex-col gap-2">
       <div className="grid header-table grid-cols-9 gap-1 text-center">
         {purchase_list
-          .filter((opcion) => opcion !== "is_sold")
-          .map((opcion) => (
+          .filter(opcion => opcion !== "is_sold")
+          .map(opcion => (
             <div
               key={opcion}
               className="overflow-hidden text-ellipsis w-full cursor-default"

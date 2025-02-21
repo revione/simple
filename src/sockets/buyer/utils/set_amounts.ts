@@ -8,7 +8,7 @@ export const set_initial_amount = () => {
     total_balance,
     custom_balance,
     type_use_balance,
-    multiplier,
+    multiplier
   } = store.getState().editables
 
   const balance = type_use_balance === "custom" ? custom_balance : total_balance

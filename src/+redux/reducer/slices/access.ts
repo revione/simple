@@ -10,13 +10,13 @@ const access_slice = createSlice({
       { payload }: { payload: Access["actualAccount"] }
     ) => ({
       ...state,
-      actualAccount: payload,
+      actualAccount: payload
     }),
     set_deriv: (state, { payload }: { payload: Access["deriv"] }) => ({
       ...state,
-      deriv: payload,
-    }),
-  },
+      deriv: payload
+    })
+  }
 })
 
 export const { set_actual_account, set_deriv } = access_slice.actions

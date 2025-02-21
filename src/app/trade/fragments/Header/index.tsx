@@ -26,8 +26,8 @@ export default function Header() {
         opacity: 1,
         transition: {
           duration: 2,
-          delay: 1,
-        },
+          delay: 1
+        }
       }}
     >
       <div className="text-xl">Rev Play</div>

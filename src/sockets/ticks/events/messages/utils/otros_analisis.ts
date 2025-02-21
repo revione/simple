@@ -74,8 +74,8 @@ function makeDecision() {
   state.internal.contract_type = increasingTrend
     ? "CALL"
     : decreasingTrend
-    ? "PUT"
-    : ""
+      ? "PUT"
+      : ""
 }
 
 function analyzeData(data: number[]) {
@@ -86,8 +86,8 @@ function analyzeData(data: number[]) {
   results.trend = increasingTrend
     ? "Hacia arriba"
     : decreasingTrend
-    ? "Hacia abajo"
-    : "Sin tendencia clara"
+      ? "Hacia abajo"
+      : "Sin tendencia clara"
 
   const threshold = calculateThreshold(data)
   results.thresholdDecision =
@@ -144,7 +144,7 @@ function calculateThreshold(data: number[]) {
 
 function calculateStandardDeviation(data: number[]) {
   const mean = data.reduce((sum, value) => sum + value, 0) / data.length
-  const squaredDifferences = data.map((value) => Math.pow(value - mean, 2))
+  const squaredDifferences = data.map(value => Math.pow(value - mean, 2))
   const variance =
     squaredDifferences.reduce((sum, value) => sum + value, 0) / data.length
   const standardDeviation = Math.sqrt(variance)
@@ -169,7 +169,7 @@ function detectOutliers(data: number[]) {
   const upperThreshold = mean + 2 * standardDeviation
 
   const outliers = data.filter(
-    (value) => value < lowerThreshold || value > upperThreshold
+    value => value < lowerThreshold || value > upperThreshold
   )
   return outliers
 }
@@ -190,7 +190,7 @@ function analyzeDifferences(data: number[]) {
     averageDifference,
     maxDifference,
     minDifference,
-    lastDifference: differences[differences.length - 1],
+    lastDifference: differences[differences.length - 1]
   }
 }
 
@@ -205,7 +205,7 @@ function calculateVolatility(data: number[]) {
     differences.reduce((sum, diff) => sum + diff, 0) / differences.length
 
   // Calcular la desviación estándar
-  const squaredDifferences = differences.map((diff) =>
+  const squaredDifferences = differences.map(diff =>
     Math.pow(diff - averageDifference, 2)
   )
   const variance =
@@ -215,7 +215,7 @@ function calculateVolatility(data: number[]) {
 
   return {
     averageDifference,
-    standardDeviation,
+    standardDeviation
   }
 }
 
@@ -230,7 +230,7 @@ function calculateVolatilityScore(data: number[]) {
     differences.reduce((sum, diff) => sum + diff, 0) / differences.length
 
   // Calcular la desviación estándar
-  const squaredDifferences = differences.map((diff) =>
+  const squaredDifferences = differences.map(diff =>
     Math.pow(diff - averageDifference, 2)
   )
   const variance =
@@ -250,7 +250,7 @@ function calculateVolatilityScore(data: number[]) {
   return {
     averageDifference,
     standardDeviation,
-    normalizedDeviation,
+    normalizedDeviation
   }
 }
 
@@ -272,7 +272,7 @@ function calculateConsecutiveDirectionPercentage(data: number[]) {
 
   return {
     percentageUp: percentageUp.toFixed(2),
-    percentageDown: percentageDown.toFixed(2),
+    percentageDown: percentageDown.toFixed(2)
   }
 }
 

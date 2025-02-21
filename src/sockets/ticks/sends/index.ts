@@ -36,7 +36,7 @@ export const subscribe_history = () => {
     end: "latest",
     start: 1,
     style: "ticks",
-    subscribe: 1,
+    subscribe: 1
   }
 
   send(message)

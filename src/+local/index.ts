@@ -2,7 +2,7 @@ import type { Candle, Contract_type, OHLC, Proposal } from "types"
 
 const initialProposals = {
   CALL: {} as Proposal,
-  PUT: {} as Proposal,
+  PUT: {} as Proposal
 }
 
 export const state = {
@@ -19,7 +19,7 @@ export const state = {
 
     multiplicador1: 2.24,
     multiplicador2: 2.24,
-    multiplicador3: 2.24,
+    multiplicador3: 2.24
   },
 
   candles: [] as Candle[],
@@ -31,34 +31,34 @@ export const state = {
   permisos: {
     iniciar: false,
     guardar: false,
-    reiniciar: false,
+    reiniciar: false
   },
 
   analista: {
-    analizar: false,
+    analizar: false
   },
 
   observer: {
-    observar: false,
+    observar: false
   },
 
   sockets: {
     run_sockets: false,
     buyer: <WebSocket | undefined>undefined,
     ticks: <WebSocket | undefined>undefined,
-    candles: <WebSocket | undefined>undefined,
+    candles: <WebSocket | undefined>undefined
   },
 
   grafica: {
     compras: [] as {
       tick: number
       type: "start" | "inprocess" | "won" | "lost" | "open" | "ni idea"
-    }[],
+    }[]
   },
 
   buyer: {
     type: "just-one" as "just-one" | "custom" | "ilimit",
-    customNumber: 10,
+    customNumber: 10
   },
 
   info: {
@@ -66,15 +66,15 @@ export const state = {
     total_lost: 0,
     accumulate_lost: 0,
     win_without_lost: 0,
-    total_won_app: 0,
+    total_won_app: 0
   },
 
   app: {
     first_time_proposal_header: true, // this just to avoid the first empty propoasl console
-    waiting_for_proposal: false, // this case is for the win process
+    waiting_for_proposal: false // this case is for the win process
   },
 
-  reconnect: false,
+  reconnect: false
 }
 
 export type State = typeof state

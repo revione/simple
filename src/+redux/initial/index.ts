@@ -14,12 +14,12 @@ export interface Access {
 
 const access = {
   actualAccount: undefined as Account | undefined,
-  deriv: undefined as Account[] | undefined,
+  deriv: undefined as Account[] | undefined
 }
 
 const buyer = {
   purchase_enabled: false, // for buttons and analysis
-  purchase_running: false,
+  purchase_running: false
 }
 
 const editables = {
@@ -45,7 +45,7 @@ const editables = {
   run_sockets_after_launch_app: false,
 
   max_lost: 7,
-  multiplier: 0.35 / 52.16,
+  multiplier: 0.35 / 52.16
 }
 
 export type Editables = typeof editables
@@ -64,21 +64,21 @@ const info = {
   total_loss_contracts: 0,
   total_profit: 0,
   total_won_contracts: 0,
-  continues: 0,
+  continues: 0
 }
 
 export const purchases = {
   ids: [] as number[],
-  items: {} as Record<string, PurchaseRedux>,
+  items: {} as Record<string, PurchaseRedux>
 }
 
 const sockets = {
   ticks: {
-    connected: false,
+    connected: false
   },
   buyer: {
-    connected: false,
-  },
+    connected: false
+  }
 }
 
 const initial = {
@@ -87,7 +87,7 @@ const initial = {
   editables,
   info,
   purchases,
-  sockets,
+  sockets
 }
 
 export default initial
