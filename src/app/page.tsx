@@ -9,15 +9,19 @@ import { useRouter } from "next/navigation"
 const Home = () => {
   const router = useRouter()
 
-  const onClickLogin = () => {
-    if (process.env.NODE_ENV === "development") {
-      router.replace(process.env.NEXT_PUBLIC_DERIV || "")
+  const login = () => {
+    if (
+      process.env.NEXT_PUBLIC_DERIV &&
+      process.env.NODE_ENV === "development"
+    ) {
+      router.replace(process.env.NEXT_PUBLIC_DERIV)
     } else {
-      setTimeout(() => {
-        window.location.replace(
-          `${process.env.NEXT_PUBLIC_OAT}${process.env.NEXT_PUBLIC_APP_ID}`
-        )
-      }, 1000)
+      alert("was")
+      // setTimeout(() => {
+      //   window.location.replace(
+      //     `${process.env.NEXT_PUBLIC_OAT}${process.env.NEXT_PUBLIC_APP_ID}`
+      //   )
+      // }, 1000)
     }
   }
 
@@ -55,7 +59,7 @@ const Home = () => {
       </header>
 
       <div className="flex gap-5 justify-center">
-        <button className="call-to-action" onClick={onClickLogin}>
+        <button className="call-to-action" onClick={login}>
           Log in
         </button>
       </div>
