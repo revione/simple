@@ -15,11 +15,20 @@ import {
   disconnected_buyer_socket,
   disconnected_ticks_socket
 } from "+redux/reducer/slices/sockets"
+import { useRouter } from "next/navigation"
 
 export const usePreset = () => {
+  const router = useRouter()
   const dispatch = useDispatch()
   const { purchase_enabled, purchase_running } = useSelector(s => s.buyer)
   const { run_sockets_after_launch_app } = useSelector(s => s.editables)
+  const { deriv } = useSelector(s => s.access)
+
+  useEffect(() => {
+    if (deriv) {
+      router.replace(`/`)
+    }
+  }, [deriv, router])
 
   useEffect(() => {
     dispatch(disconnected_buyer_socket())
